@@ -6,7 +6,7 @@ from onion.domain.post import Post
 
 class PostDTO(Base):
     __tablename__ = 'data'
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, nullable=False)
     title = Column(String, nullable=False)
     body = Column(String, nullable=False)

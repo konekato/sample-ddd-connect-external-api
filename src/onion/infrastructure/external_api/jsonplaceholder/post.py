@@ -1,5 +1,5 @@
 import requests
-from domain.post import Post
+from onion.domain.post import Post
 
 def fetch_data() -> Post:
     # 任意の外部APIからデータを取得する

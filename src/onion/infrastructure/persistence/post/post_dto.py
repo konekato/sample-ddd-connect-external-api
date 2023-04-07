@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 
 from ..sqlite import Base
-from domain.post import Post
+from onion.domain.post import Post
 
 
 class PostDTO(Base):

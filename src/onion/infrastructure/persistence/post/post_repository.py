@@ -3,7 +3,7 @@ from typing import Optional
 from sqlalchemy.orm import Session
 
 from .post_dto import PostDTO
-from domain.post import PostRepository, Post
+from onion.domain.post import PostRepository, Post
 
 
 class PostRepositoryImpl(PostRepository):

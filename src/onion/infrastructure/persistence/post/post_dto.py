@@ -11,7 +11,7 @@ class PostDTO(Base):
     title = Column(String, nullable=False)
     body = Column(String, nullable=False)
 
-    def to_model(self) -> Post:
+    def to_entity(self) -> Post:
         return Post(
             id=self.id,
             user_id=self.user_id,
@@ -20,7 +20,7 @@ class PostDTO(Base):
         )
 
     @staticmethod
-    def from_model(post: Post) -> 'PostDTO':
+    def from_entity(post: Post) -> 'PostDTO':
         return PostDTO(
             id=post.id,
             name=post.name,

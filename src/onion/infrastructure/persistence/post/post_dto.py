@@ -5,7 +5,7 @@ from onion.domain.post import Post
 
 
 class PostDTO(Base):
-    __tablename__ = 'data'
+    __tablename__ = 'posts'
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, nullable=False)
     title = Column(String, nullable=False)
@@ -23,6 +23,7 @@ class PostDTO(Base):
     def from_entity(post: Post) -> 'PostDTO':
         return PostDTO(
             id=post.id,
-            name=post.name,
-            description=post.description,
+            user_id=post.user_id,
+            title=post.title,
+            body=post.body,
         )

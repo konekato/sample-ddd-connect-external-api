@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List
 
 from sqlalchemy.orm import Session
 
@@ -7,14 +7,15 @@ from onion.domain.post import PostRepository, Post
 
 
 class PostRepositoryImpl(PostRepository):
+    
     def __init__(self, session: Session):
         self.session = session
 
-    def create(self, post: Post):
-        post_dto = PostDTO.from_model(post)
-        self.session.add(post_dto)
-
+    def insert_posts(self, posts: List[Post]):
         try:
+            post_dtos = list(map(lambda post: PostDTO.from_entity(post), posts))
+            self.session.bulk_save_objects(post_dtos)
             self.session.commit()
         except:
+            self.session.rollback()
             raise
